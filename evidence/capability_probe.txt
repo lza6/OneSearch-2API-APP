@@ -1,0 +1,27 @@
+### 1. web_search (联网搜索)
+  err= finish=stop t=13.97
+  reply: 今天的科技新闻主要聚焦于人工智能（AI）的多个前沿领域、数字安全以及材料科学的突破。
+
+**人工智能与数字安全**
+
+*   **AI工业操作系统应用**：武汉菲信智能科技有限公司自主研发的“菲信天一·AI工业操作系统”已在多家企业应用，通
+  webs: 13 sources
+    - wuhan.gov.cn | https://vertexaisearch.cloud.google.com/grounding-
+    - people.com.cn | https://vertexaisearch.cloud.google.com/grounding-
+    - stocktitan.net | https://vertexaisearch.cloud.google.com/grounding-
+
+### 2. 多模态读图 (image_url)
+  err= finish=stop t=6.15
+  reply: 蓝色和黄色
+
+### 3. 多轮对话记忆
+  reply: 你叫**小明**。请问有什么我可以帮助你的吗？
+
+### 4. 长上下文 (重复文本约 6万字)
+  err= finish=stop t=7.37
+  reply: 以上文本大约重复了**200次**。
+
+### 5. 错误路径 (无效模型)
+  err= reply: ### Hi — nice to meet you 👋
+
+I can help with **writing**, **

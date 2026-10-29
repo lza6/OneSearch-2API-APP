@@ -1,0 +1,20 @@
+# Dependencies / caches
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.log
+
+# Runtime
+.env
+.env.local
+*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/

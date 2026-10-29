@@ -1,0 +1,74 @@
+deviceId=3506ad46-1906-4e45-93ca-74befd9e5198
+gpt-4o                       OK   Hi there! How can I 
+gpt-4o-mini                  OK   Hello! How can I ass
+gpt-4.1                      OK   Hi there! How can I 
+gpt-4.1-mini                 OK   Hello! How can I ass
+gpt-4.1-nano                 OK   Hello! How can I ass
+gpt-5                        OK   Hey! 👋  How can I he
+gpt-5-mini                   OK   ## **Hi — nice to me
+gpt-5-nano                   OK   Hello! How can I ass
+gpt-5.1                      OK   Hello! How can I ass
+gpt-5.1-mini                 OK   Hello! How can I ass
+gpt-3.5-turbo                OK   Hello! How can I ass
+gpt-4-turbo                  OK   **Hi — nice to meet 
+o1                           OK   Hello — nice to meet
+o1-mini                      OK   Hello! How can I ass
+o1-preview                   OK   Hello — nice to meet
+o3                           OK   Hello! How can I ass
+o3-mini                      OK   Hello! How can I ass
+o3-pro                       OK   Hello! How can I ass
+o4-mini                      OK   # Hi — nice to meet 
+claude-3-5-sonnet            OK   Hello! How can I ass
+claude-3-5-sonnet-latest     OK   Hello! How can I ass
+claude-3-5-haiku             OK   Hi there! How can I 
+claude-3-7-sonnet            OK   Hello! How can I ass
+claude-3-7-sonnet-latest     OK   Hello! 👋  - I can he
+claude-sonnet-4              OK   Hello! How can I ass
+claude-sonnet-4-20250514     OK   Hello! How can I ass
+claude-sonnet-4.5            OK   Hello! I'm here to h
+claude-sonnet-4-5            OK   Hello! How can I hel
+claude-opus-4                OK   Hello! How can I ass
+claude-opus-4-1              OK   ## Hello — nice to m
+claude-opus-4.1              OK   Hello! How can I ass
+claude-opus-4-5              OK   Hello! How can I ass
+claude-opus-4-6              OK   Hello! How can I hel
+claude-opus-4.6              OK   Hello! How can I ass
+claude-haiku-4.5             OK   Hello! How can I ass
+claude-haiku-4-5             OK   Hello! How can I ass
+gemini-2.0-flash             OK   # Hi — nice to meet 
+gemini-2.5-flash             OK   Hi there! How can I 
+gemini-2.5-pro               OK   Hello! What can we a
+gemini-2.5-flash-lite        OK   - **Hi — nice to mee
+gemini-3-flash               OK   Hello! How can I ass
+gemini-3-pro                 OK   Hello! How can I ass
+gemini-3-flash-preview       ERR1002
+gemini-3-pro-preview         ERR1002
+gemini-3.0-flash             OK   Hello — nice to meet
+gemini-2.5-flash-preview     OK   Hello! How can I ass
+grok-3                       OK   Hello! How can I ass
+grok-3-mini                  OK   Hi there! How can I 
+grok-4                       OK   Hello! How can I ass
+grok-4-fast                  OK   ### Hey — nice to me
+grok-4.1-fast                OK   Hello! How can I ass
+grok-2                       OK   Hello! How can I ass
+llama-4-maverick             OK   # Hi — nice to meet 
+llama-4-scout                OK   Hello! How can I ass
+llama-3.3-70b                OK   Hello! How can I ass
+llama-3.1-70b                OK   Hello! How can I ass
+llama-3.1-405b               OK   Hello! How can I ass
+deepseek-chat                OK   Hello! How can I ass
+deepseek-r1                  OK   **Hi — nice to meet 
+deepseek-v3                  OK   Hello! How can I ass
+deepseek-reasoner            OK   Hello! How can I ass
+qwen                         OK   Hi there! How can I 
+qwen-max                     OK   Hello! How can I ass
+qwen2.5                      OK   Hello! How can I ass
+mistral-large                OK   Hello! How can I ass
+kimi                         OK   Hello! How can I ass
+Claude Opus 4.6              OK   Hi there! How can I 
+claude-sonnet-4.5            OK   Hi there! 👋  How can
+Llama 4 Maverick             OK   Hi there! How can I 
+Grok-4.1 Fast                OK   Hi there!  I'm ready
+
+=== AVAILABLE (68) ===
+gpt-4o, gpt-4o-mini, gpt-4.1, gpt-4.1-mini, gpt-4.1-nano, gpt-5, gpt-5-mini, gpt-5-nano, gpt-5.1, gpt-5.1-mini, gpt-3.5-turbo, gpt-4-turbo, o1, o1-mini, o1-preview, o3, o3-mini, o3-pro, o4-mini, claude-3-5-sonnet, claude-3-5-sonnet-latest, claude-3-5-haiku, claude-3-7-sonnet, claude-3-7-sonnet-latest, claude-sonnet-4, claude-sonnet-4-20250514, claude-sonnet-4.5, claude-sonnet-4-5, claude-opus-4, claude-opus-4-1, claude-opus-4.1, claude-opus-4-5, claude-opus-4-6, claude-opus-4.6, claude-haiku-4.5, claude-haiku-4-5, gemini-2.0-flash, gemini-2.5-flash, gemini-2.5-pro, gemini-2.5-flash-lite, gemini-3-flash, gemini-3-pro, gemini-3.0-flash, gemini-2.5-flash-preview, grok-3, grok-3-mini, grok-4, grok-4-fast, grok-4.1-fast, grok-2, llama-4-maverick, llama-4-scout, llama-3.3-70b, llama-3.1-70b, llama-3.1-405b, deepseek-chat, deepseek-r1, deepseek-v3, deepseek-reasoner, qwen, qwen-max, qwen2.5, mistral-large, kimi, Claude Opus 4.6, claude-sonnet-4.5, Llama 4 Maverick, Grok-4.1 Fast

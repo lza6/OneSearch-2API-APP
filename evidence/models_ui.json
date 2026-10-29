@@ -1,0 +1,68 @@
+{
+  "no_id": {
+    "id": 20,
+    "title": "Smart Mode",
+    "type": "smart",
+    "image": true
+  },
+  "Claude Opus 4.6": {
+    "id": 27,
+    "title": "Claude Opus 4.6",
+    "type": "pro",
+    "image": true
+  },
+  "claude-sonnet-4.5": {
+    "id": 21,
+    "title": "Claude Sonnet 4.5",
+    "type": "pro",
+    "image": true
+  },
+  "Llama 4 Maverick": {
+    "id": 23,
+    "title": "Llama 4 Maverick",
+    "type": "pro",
+    "image": true
+  },
+  "gemini-3-flash-preview": {
+    "id": 25,
+    "title": "Gemini 3 Flash",
+    "type": "pro",
+    "image": true
+  },
+  "gemini-3-pro-preview": {
+    "id": 24,
+    "title": "Gemini 3 Pro",
+    "type": "pro",
+    "image": true
+  },
+  "gemini-2.5-flash": {
+    "id": 8,
+    "title": "Gemini 2.5 Flash",
+    "type": "normal",
+    "image": true
+  },
+  "gemini-2.5-pro": {
+    "id": 26,
+    "title": "Gemini 2.5 Pro",
+    "type": "pro",
+    "image": true
+  },
+  "Grok-4.1 Fast": {
+    "id": 22,
+    "title": "Grok-4.1 Fast",
+    "type": "pro",
+    "image": true
+  },
+  "gpt-5-mini": {
+    "id": 16,
+    "title": "GPT-5 mini",
+    "type": "normal",
+    "image": true
+  },
+  "gpt-4o-mini": {
+    "id": 1,
+    "title": "GPT-4o mini",
+    "type": "normal",
+    "image": true
+  }
+}

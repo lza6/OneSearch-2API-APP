@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OneSearch 2API · Demo</title>
+<style>
+  :root { --bg:#0f1117; --panel:#1a1d27; --border:#2a2f3d; --accent:#6c8cff; --accent2:#8b5cf6; --text:#e4e6eb; --muted:#8a8f9c; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif; background:var(--bg); color:var(--text); height:100vh; display:flex; flex-direction:column; }
+  header { padding:12px 20px; background:var(--panel); border-bottom:1px solid var(--border); display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+  header h1 { font-size:16px; font-weight:600; background:linear-gradient(90deg,var(--accent),var(--accent2)); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .badge { font-size:11px; padding:3px 8px; border-radius:20px; background:#23324d; color:#7fb0ff; }
+  select, .toggle { background:var(--panel); color:var(--text); border:1px solid var(--border); border-radius:8px; padding:7px 10px; font-size:13px; }
+  .toggle { cursor:pointer; user-select:none; }
+  .toggle.on { border-color:var(--accent); color:var(--accent); }
+  .spacer { flex:1; }
+  #status { font-size:12px; color:var(--muted); }
+  #status.ok { color:#4ade80; } #status.err { color:#f87171; }
+  main { flex:1; overflow-y:auto; padding:20px; display:flex; flex-direction:column; gap:14px; }
+  .msg { max-width:80%; padding:12px 15px; border-radius:12px; font-size:14px; line-height:1.6; white-space:pre-wrap; word-break:break-word; }
+  .msg.user { align-self:flex-end; background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; }
+  .msg.assistant { align-self:flex-start; background:var(--panel); border:1px solid var(--border); }
+  .msg .meta { font-size:11px; color:var(--muted); margin-top:6px; }
+  .msg.err { background:#3a1d1d; border-color:#7f2222; color:#fca5a5; }
+  footer { padding:14px 20px; background:var(--panel); border-top:1px solid var(--border); display:flex; gap:10px; }
+  #input { flex:1; background:var(--bg); border:1px solid var(--border); border-radius:10px; padding:12px 14px; color:var(--text); font-size:14px; resize:none; font-family:inherit; }
+  #send { background:linear-gradient(135deg,var(--accent),var(--accent2)); color:#fff; border:none; border-radius:10px; padding:0 22px; font-size:14px; cursor:pointer; font-weight:600; }
+  #send:disabled { opacity:.5; cursor:not-allowed; }
+  .typing::after { content:'▋'; animation:blink 1s infinite; }
+  @keyframes blink { 50%{opacity:0;} }
+</style>
+</head>
+<body>
+<header>
+  <h1>🛰️ OneSearch 2API</h1>
+  <span class="badge" id="modelCount">模型…</span>
+  <select id="model"></select>
+  <div class="toggle" id="webToggle" title="启用谷歌联网搜索">🌐 联网</div>
+  <div class="spacer"></div>
+  <span id="status">连接中…</span>
+</header>
+<main id="chat">
+  <div class="msg assistant">你好！我是 OneSearch 2API 网关的演示页。选择模型后开始对话，支持流式输出、多模态读图与联网搜索。</div>
+</main>
+<footer>
+  <textarea id="input" rows="1" placeholder="输入消息… (Enter 发送, Shift+Enter 换行)"></textarea>
+  <button id="send">发送</button>
+</footer>
+<script>
+const API = '';  // 同源, 若跨域填网关地址 如 'http://127.0.0.1:8920'
+const chat = document.getElementById('chat');
+const input = document.getElementById('input');
+const send = document.getElementById('send');
+const modelSel = document.getElementById('model');
+const statusEl = document.getElementById('status');
+const modelCount = document.getElementById('modelCount');
+const webToggle = document.getElementById('webToggle');
+let history = [];
+let webSearch = false;
+
+webToggle.addEventListener('click', () => {
+  webSearch = !webSearch;
+  webToggle.classList.toggle('on', webSearch);
+});
+
+async function loadModels() {
+  try {
+    const r = await fetch(API + '/v1/models');
+    const d = await r.json();
+    modelSel.innerHTML = '';
+    d.data.forEach(m => {
+      const o = document.createElement('option');
+      o.value = m.id;
+      o.textContent = (m.title && m.title !== m.id) ? `${m.title} · ${m.id}` : m.id;
+      modelSel.appendChild(o);
+    });
+    // 默认选中 gpt-4o-mini
+    const def = d.data.find(m => m.id === 'gpt-4o-mini');
+    if (def) modelSel.value = 'gpt-4o-mini';
+    modelCount.textContent = `${d.data.length} 模型`;
+    statusEl.textContent = '就绪'; statusEl.className = 'ok';
+  } catch (e) {
+    statusEl.textContent = '连接失败: ' + e.message; statusEl.className = 'err';
+  }
+}
+
+function addMsg(role, text, cls) {
+  const div = document.createElement('div');
+  div.className = 'msg ' + role + (cls ? ' ' + cls : '');
+  div.textContent = text;
+  chat.appendChild(div);
+  chat.scrollTop = chat.scrollHeight;
+  return div;
+}
+
+async function sendMessage() {
+  const text = input.value.trim();
+  if (!text) return;
+  input.value = ''; input.style.height = 'auto';
+  send.disabled = true;
+  addMsg('user', text);
+  history.push({ role: 'user', content: text });
+
+  const model = modelSel.value;
+  const body = { model, messages: history, stream: true, web_search: webSearch };
+  const bubble = addMsg('assistant', '', 'typing');
+  let acc = '';
+  const t0 = performance.now();
+
+  try {
+    const r = await fetch(API + '/v1/chat/completions', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+    if (!r.ok) { throw new Error('HTTP ' + r.status + ': ' + (await r.text()).slice(0, 200)); }
+    const reader = r.body.getReader();
+    const decoder = new TextDecoder();
+    let buf = '';
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buf += decoder.decode(value, { stream: true });
+      const lines = buf.split('\n');
+      buf = lines.pop();
+      for (const line of lines) {
+        const s = line.trim();
+        if (!s.startsWith('data:')) continue;
+        const p = s.slice(5).trim();
+        if (p === '[DONE]') continue;
+        try {
+          const j = JSON.parse(p);
+          if (j.error) throw new Error(j.error.message);
+          const dt = j.choices?.[0]?.delta?.content;
+          if (dt) { acc += dt; bubble.textContent = acc; chat.scrollTop = chat.scrollHeight; }
+        } catch (e) {}
+      }
+    }
+    bubble.classList.remove('typing');
+    const dt = ((performance.now() - t0) / 1000).toFixed(1);
+    const meta = document.createElement('div');
+    meta.className = 'meta';
+    meta.textContent = `模型 ${model} · ${dt}s${webSearch ? ' · 联网' : ''}`;
+    bubble.appendChild(meta);
+    history.push({ role: 'assistant', content: acc });
+  } catch (e) {
+    bubble.classList.remove('typing');
+    bubble.className = 'msg err';
+    bubble.textContent = '错误: ' + e.message;
+  } finally {
+    send.disabled = false;
+    input.focus();
+  }
+}
+
+send.addEventListener('click', sendMessage);
+input.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+});
+input.addEventListener('input', () => {
+  input.style.height = 'auto'; input.style.height = Math.min(input.scrollHeight, 120) + 'px';
+});
+loadModels();
+</script>
+</body>
+</html>

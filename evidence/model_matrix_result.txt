@@ -1,0 +1,56 @@
+deviceId=d0f63fb5-2179-4ff2-8bc0-051fe6bd3f75  test prompt=请只回复四个字：你好世界
+model                      | st  | chk | ttft | t     | codes   | finish | reply
+--------------------------------------------------------------------------------------------------------------
+gpt-4o-mini                | 201 |   5 | 2.592 | 3.17  | [200]    | stop   | 你好世界
+gpt-5-mini                 | 201 |   5 | 2.478 | 17.12 | [200]    | stop   | 你好世界
+gemini-2.5-flash           | 201 |   4 | 2.472 | 4.67  | [200]    | stop   | 你好世界
+gemini-2.5-pro             | 201 |   5 | 2.904 | 20.85 | [200]    | stop   | 你好世界  这是一个很棒的开始！“你好世界”是许多领域的经典第一步，尤其
+gemini-3-pro-preview       | 201 |   2 | 3.091 | 3.15  | [200]    |        | (EMPTY)
+gemini-3-flash-preview     | 201 |   2 | 2.385 | 2.46  | [200]    |        | (EMPTY)
+claude-sonnet-4.5          | 201 |   4 | 2.625 | 3.59  | [200]    | stop   | 你好世界
+Claude Opus 4.6            | 201 |   4 | 2.952 | 4.28  | [200]    | stop   | 你好世界  有什么我能为你提供帮助的吗？
+Grok-4.1 Fast              | 201 |   4 | 2.398 | 3.24  | [200]    | stop   | 你好世界
+Llama 4 Maverick           | 201 |   4 | 2.727 | 4.06  | [200]    | stop   | 你好世界
+no_id                      | 201 |   5 | 2.675 | 3.45  | [200]    | stop   | 你好世界
+
+
+=== FULL REPLIES ===
+
+[gpt-4o-mini] st=201 finish=stop codes=[200]
+你好世界
+
+[gpt-5-mini] st=201 finish=stop codes=[200]
+你好世界
+
+[gemini-2.5-flash] st=201 finish=stop codes=[200]
+你好世界
+
+[gemini-2.5-pro] st=201 finish=stop codes=[200]
+你好世界
+
+这是一个很棒的开始！“你好世界”是许多领域的经典第一步，尤其是在编程中。
+
+**您是想用“你好世界”来测试什么功能，还是我们一起开始一个新任务？**
+
+[gemini-3-pro-preview] st=201 finish= codes=[200]
+
+
+[gemini-3-flash-preview] st=201 finish= codes=[200]
+
+
+[claude-sonnet-4.5] st=201 finish=stop codes=[200]
+你好世界
+
+[Claude Opus 4.6] st=201 finish=stop codes=[200]
+你好世界
+
+有什么我能为你提供帮助的吗？
+
+[Grok-4.1 Fast] st=201 finish=stop codes=[200]
+你好世界
+
+[Llama 4 Maverick] st=201 finish=stop codes=[200]
+你好世界
+
+[no_id] st=201 finish=stop codes=[200]
+你好世界
